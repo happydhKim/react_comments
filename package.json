@@ -1,0 +1,16 @@
+{
+  "name": "front_setup_react",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "https://github.com/happydhKim/front_setup_react",
+  "author": "happydhKim <happydhKim870@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client:build": "yarn workspace client build",
+    "client:dev": "yarn workspace client dev"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
