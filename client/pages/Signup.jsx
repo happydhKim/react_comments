@@ -2,16 +2,9 @@ import React, { useState, useCallback } from 'react';
 import {
   Form, Input, Checkbox, Button
 } from 'antd';
+import { commonInput } from '../hooks';
 
 const Signup = () => {
-  const commonInput = (initValue = null) => {
-    const [value, setter] = useState(initValue);
-    const handler = useCallback((e) => {
-      setter(e.target.value);
-    }, []);
-    return [value, handler];
-  };
-
   const [id, onChangeId] = commonInput('');
   const [nickname, onChangeNickName] = commonInput('');
   const [password, onChangePassword] = commonInput('');
