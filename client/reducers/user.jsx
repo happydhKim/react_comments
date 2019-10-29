@@ -2,23 +2,30 @@
 /**
  * @description User Store
  */
+
+const dummyUser = {
+  nickname: 'kim',
+  comment: [],
+  Followings: [],
+  Followers: []
+};
+
 export const initialState = {
   isLoggedIn: false,
-  user: {}
+  user: null
 };
 
 const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
 
-const loginAction = {
+export const loginAction = {
   type: LOGIN,
   data: {
     nickname: 'kim'
   }
 };
 
-const LOGOUT = 'LOGOUT';
-
-const logoutAction = {
+export const logoutAction = {
   type: LOGOUT
 };
 
@@ -28,7 +35,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: action.data
+        user: dummyUser
       };
     }
     case LOGOUT: {

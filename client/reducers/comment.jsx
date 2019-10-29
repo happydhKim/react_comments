@@ -2,17 +2,24 @@
  * @description Comment Store
  */
 export const initialState = {
-  comment: []
+  comment: [{
+    User: {
+      id: 1,
+      nickname: ' kim',
+      content: '1댓글'
+    }
+  }],
+  imagePaths: []
 };
 
 const ADD_COMMENT = 'ADD_COMMENT';
 const ADD_DUMMY = 'ADD_DUMMY';
 
-const addComment = {
+export const addComment = {
   type: ADD_COMMENT
 };
 
-const addDummy = {
+export const addDummy = {
   type: ADD_DUMMY,
   data: {
     content: '안녕하세요',

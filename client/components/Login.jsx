@@ -3,14 +3,18 @@ import {
   Form, Input, Button
 } from 'antd';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import { commonInput } from '../hooks';
+import { loginAction } from '../reducers/user';
 
 const Login = () => {
   const [id, onChangeId] = commonInput('');
   const [password, onChangePassword] = commonInput('');
+  const dispatch = useDispatch();
 
   const onSubmitForm = useCallback((e) => {
     e.preventDefault();
+    dispatch(loginAction);
     console.log({
       id, password
     });

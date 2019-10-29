@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 const Comment = ({ comment }) => (
   <Card
-    key={+comment.createdAt}
-    cover={comment.img && <img alt="test" src={comment.img} />}
     actions={[
       <Icon type="retweet" key="retweet" />,
       <Icon type="heart" key="heart" />,
@@ -24,9 +22,9 @@ const Comment = ({ comment }) => (
 Comment.propTypes = {
   comment: PropTypes.shape({
     User: PropTypes.object,
-    content: PropTypes.string,
-    img: PropTypes.string,
-    createAt: PropTypes.object
+    id: PropTypes.integer,
+    nickname: PropTypes.string,
+    content: PropTypes.string
   })
 };
 
