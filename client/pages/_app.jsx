@@ -41,4 +41,5 @@ const configureStore = (initialState, options) => {
   sagaMiddleware.run(rootSaga);
   return store;
 };
+
 export default withRedux(configureStore)(App);
