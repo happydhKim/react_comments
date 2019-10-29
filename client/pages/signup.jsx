@@ -2,7 +2,9 @@ import React, { useState, useCallback } from 'react';
 import {
   Form, Input, Checkbox, Button
 } from 'antd';
+import { useDispatch } from 'react-redux';
 import { commonInput } from '../hooks';
+import { signUpAction } from '../reducers/user';
 
 const Signup = () => {
   const [id, onChangeId] = commonInput('');
@@ -14,7 +16,7 @@ const Signup = () => {
 
   const [passwordError, setPasswordError] = useState(false);
   const [agreeError, setAgreeError] = useState(false);
-
+  const dispatch = useDispatch();
   const onSubmit = useCallback((e) => {
     e.preventDefault();
     if (password !== passwordCheck) {
@@ -23,6 +25,11 @@ const Signup = () => {
     if (!agree) {
       return setAgreeError(true);
     }
+    dispatch(signUpAction({
+      id,
+      password,
+      nickname
+    }));
     console.log({
       id, nickname, password, passwordCheck, agree
     });

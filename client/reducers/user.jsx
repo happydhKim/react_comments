@@ -15,8 +15,9 @@ export const initialState = {
   user: null
 };
 
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SIGN_UP = 'SIGN_UP';
 
 export const loginAction = {
   type: LOGIN,
@@ -28,6 +29,11 @@ export const loginAction = {
 export const logoutAction = {
   type: LOGOUT
 };
+
+export const signUpAction = (data) => ({
+  type: SIGN_UP,
+  data
+});
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -43,6 +49,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: null
+      };
+    }
+    case SIGN_UP: {
+      return {
+        ...state,
+        signUpData: action.data
       };
     }
     default: {
