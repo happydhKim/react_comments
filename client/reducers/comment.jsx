@@ -36,7 +36,11 @@ const reducer = (state = initialState, action) => {
         comments: [action.data, ...state.comments]
       };
     }
-    default:
+    default: {
+      return {
+        ...state
+      };
+    }
   }
 };
 
