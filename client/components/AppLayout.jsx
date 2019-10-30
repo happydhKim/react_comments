@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import {
@@ -31,6 +31,12 @@ const AppLayout = ({ children }) => {
     });
   };
 
+  useEffect(() => {
+    setState({
+      visible: false
+    });
+  }, [isLoggedIn === true]);
+
   return (
     <div>
       <Menu mode="horizontal">
@@ -42,7 +48,7 @@ const AppLayout = ({ children }) => {
         <Menu.Item key="signup"><Link href="/signup"><a>회원가입</a></Link></Menu.Item>
         <Menu.Item key="profile"><Link href="/profile"><a>회원정보</a></Link></Menu.Item>
         {isLoggedIn
-          ? <Menu.Item key="logout"><Button type="primary" onClick="alert('asd')">로그아웃</Button></Menu.Item>
+          ? <Menu.Item key="logout"><Button type="primary">로그아웃</Button></Menu.Item>
           : <Menu.Item key="login"><Button type="primary" onClick={showModal}>로그인</Button></Menu.Item>}
         <Modal
           title="로그인을 해주세요"

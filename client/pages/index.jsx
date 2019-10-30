@@ -4,14 +4,13 @@ import WriteComment from '../components/WriteComment';
 import Comment from '../components/Comment';
 
 const Main = () => {
-  // const { user } = useSelector((state) => state.user.user);
-  const { isLoggedIn } = useSelector((state) => state.user.isLoggedIn);
-  const { comment } = useSelector((state) => state.comment);
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const { mainComment } = useSelector((state) => state.comment);
   return (
     <>
       <div>
         {isLoggedIn && <WriteComment />}
-        {comment.map((c) => <Comment key={c} comment={c} />)}
+        {mainComment.map((c) => <Comment key={c} comment={c} />)}
       </div>
     </>
   );

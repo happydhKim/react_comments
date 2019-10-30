@@ -4,9 +4,11 @@
  * imagePaths 이미지 경로
  * addCommentErrorReason 댓글 등록 실패 사유
  * isAddingComment 댓글 등록
+ * addedComment 댓글 등록 성공
  */
 export const initialState = {
-  comment: [{
+  mainComment: [{
+    id: 1,
     User: {
       id: 1,
       nickname: ' kim'
@@ -16,16 +18,18 @@ export const initialState = {
   }],
   imagePaths: [],
   addCommentErrorReason: '',
-  isAddingComment: false
+  isAddingComment: false,
+  addedComment: false
 };
 
 const dummyComment = {
-  id: 2,
+  id: 1,
   User: {
     id: 1,
-    nickname: 'kim'
+    nickname: ' kim'
   },
-  content: '와우 좋네요!!'
+  content: '1댓글',
+  img: 'http://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/movie/01afb7b934974bb285ad8d82cfd92d90.JPG'
 };
 
 export const LOAD_MAIN_COMMENTS_REQUEST = 'LOAD_MAIN_COMMENTS_REQUEST';
@@ -91,20 +95,21 @@ export default (state = initialState, action) => {
         ...state,
         isAddingComment: true,
         addCommentErrorReason: '',
-        commentAdded: false
+        addedComment: false
       };
     }
     case ADD_COMMENT_SUCCESS: {
-      const commentIndex = state.mainComment.findIndex((v) => v.id === action.data.commentId);
-      const comment = state.mainPosts[commentIndex];
-      const Content = [...comment.content, dummyComment];
-      const mainPosts = [...state.mainPosts];
-      mainPosts[commentIndex] = { ...comment, Content };
+      // const commentIndex = state.mainEvents.findIndex((v) => v.id === action.data.eventId);
+      // const comment = state.mainEvents[commentIndex];
+      // const Content = [...comment.content, dummyComment];
+      // const mainComment = [...state.mainEvents];
+      // mainComments[commentIndex] = { ...comment, Content };
       return {
         ...state,
         isAddingComment: false,
-        mainPosts,
-        commentAdded: true
+        // mainComment,
+        mainComment: [dummyComment, ...state.mainComment],
+        addedComment: true
       };
     }
     case ADD_COMMENT_FAILURE: {

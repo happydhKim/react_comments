@@ -14,6 +14,7 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/forbid-prop-types": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/require-default-props": "off"
   }
 };
