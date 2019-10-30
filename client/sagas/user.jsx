@@ -30,14 +30,17 @@ function* login() {
 
 function* signUp() {
   try {
-    yield call(signUpAPI);
+    // yield call(signUpAPI);
+    yield delay(2000);
+    throw new Error('에러가 발생했어요.');
     yield put({
-      type: LOGIN_SUCCESS
+      type: SIGN_UP_SUCCESS
     });
   } catch (e) {
     console.error(e);
     yield put({
-      type: LOGIN_FAILURE
+      type: SIGN_UP_FAILURE,
+      error: e
     });
   }
 }
@@ -52,6 +55,7 @@ function* watchSignUp() {
 
 export default function* userSaga() {
   yield all([
-    fork(watchLogin)
+    fork(watchLogin),
+    fork(watchSignUp)
   ]);
 }
