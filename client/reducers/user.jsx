@@ -63,22 +63,6 @@ export const REMOVE_FOLLOWER_FAILURE = 'REMOVE_FOLLOWER_FAILURE';
 
 export const ADD_COMMENT_TO_ME = 'ADD_COMMENT_TO_ME';
 
-export const loginAction = {
-  type: LOGIN_REQUEST,
-  data: {
-    nickname: 'kim'
-  }
-};
-
-export const logoutAction = {
-  type: LOGOUT_REQUEST
-};
-
-export const signUpAction = (data) => ({
-  type: SIGN_UP_REQUEST,
-  data
-});
-
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST: {

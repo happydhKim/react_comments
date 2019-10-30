@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import { useDispatch } from 'react-redux';
 import { commonInput } from '../hooks';
-import { signUpAction } from '../reducers/user';
+import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const Signup = () => {
   const [id, onChangeId] = commonInput('');
@@ -25,10 +25,13 @@ const Signup = () => {
     if (!agree) {
       return setAgreeError(true);
     }
-    dispatch(signUpAction({
-      id,
-      password,
-      nickname
+    dispatch(({
+      type: SIGN_UP_REQUEST,
+      data: {
+        id,
+        password,
+        nickname
+      }
     }));
     console.log({
       id, nickname, password, passwordCheck, agree

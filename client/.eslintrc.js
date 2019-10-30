@@ -12,6 +12,8 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-underscore-dangle": "off",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 };
