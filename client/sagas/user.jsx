@@ -1,6 +1,7 @@
 import {
-  all, fork, takeLatest, call, put, takeEvery, delay
+  all, fork, takeLatest, put, call, takeEvery, delay
 } from 'redux-saga/effects';
+import axios from 'axios';
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE
 } from '../reducers/user';
@@ -9,8 +10,8 @@ function loginAPI() {
 
 }
 
-function signUpAPI() {
-
+function signUpAPI(signUpData) {
+  return axios.post('http://localhost:3005/api/user/', signUpData);
 }
 
 function* login() {
@@ -28,11 +29,10 @@ function* login() {
   }
 }
 
-function* signUp() {
+function* signUp(action) {
   try {
-    // yield call(signUpAPI);
+    yield call(signUpAPI, action.data);
     yield delay(2000);
-    throw new Error('에러가 발생했어요.');
     yield put({
       type: SIGN_UP_SUCCESS
     });
