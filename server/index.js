@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+
+dotenv.config();
 const express = require('express');
 const db = require('./models');
 
@@ -7,6 +10,9 @@ const userAPIRouter = require('./routes/user');
 const commentAPIRouter = require('./routes/comment');
 const commentsAPIRouter = require('./routes/comments');
 const hashtagAPIRouter = require('./routes/hashtag');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('익스프레스 안녕~');
