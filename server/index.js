@@ -2,6 +2,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 const db = require('./models');
 
 const app = express();
@@ -11,6 +13,8 @@ const commentAPIRouter = require('./routes/comment');
 const commentsAPIRouter = require('./routes/comments');
 const hashtagAPIRouter = require('./routes/hashtag');
 
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

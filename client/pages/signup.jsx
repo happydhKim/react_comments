@@ -7,7 +7,7 @@ import { commonInput } from '../hooks';
 import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const Signup = () => {
-  const [id, onChangeId] = commonInput('');
+  const [userId, onChangeId] = commonInput('');
   const [nickname, onChangeNickName] = commonInput('');
   const [password, onChangePassword] = commonInput('');
 
@@ -30,15 +30,15 @@ const Signup = () => {
     dispatch(({
       type: SIGN_UP_REQUEST,
       data: {
-        id,
+        userId,
         password,
         nickname
       }
     }));
     console.log({
-      id, nickname, password, passwordCheck, agree
+      userId, nickname, password, passwordCheck, agree
     });
-  }, [password, passwordCheck, agree]);
+  }, [userId, nickname, password, passwordCheck, agree]);
 
   const onChangePasswordCheck = useCallback((e) => {
     setPasswordError(e.target.value !== password);
@@ -56,7 +56,7 @@ const Signup = () => {
         <div>
           <label htmlFor="user-id">아이디</label>
           <br />
-          <Input name="user-id" value={id} required onChange={onChangeId} />
+          <Input name="user-id" value={userId} required onChange={onChangeId} />
         </div>
         <div>
           <label htmlFor="user-nick">닉네임</label>
