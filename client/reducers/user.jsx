@@ -13,7 +13,6 @@
  * userInfo 사용자 정보
  */
 export const initialState = {
-  isLoggedIn: false,
   isLoggingOut: false,
   isLoggingIn: false,
   logInErrorReason: '',
@@ -24,13 +23,6 @@ export const initialState = {
   followingList: [],
   followerList: [],
   userInfo: null
-};
-
-const dummyUser = {
-  nickname: 'kim',
-  comment: [],
-  Followings: [],
-  Followers: []
 };
 
 export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
@@ -44,6 +36,10 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 
 export const LOAD_FOLLOW_REQUEST = 'LOAD_FOLLOW_REQUEST';
 export const LOAD_FOLLOW_SUCCESS = 'LOAD_FOLLOW_SUCCESS';
@@ -76,8 +72,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        isLoggedIn: true,
-        user: dummyUser,
+        user: action.data,
         isLoading: false
       };
     }
@@ -85,7 +80,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        isLoggedIn: false,
         logInErrorReason: action.error,
         user: null
       };
@@ -93,8 +87,31 @@ export default (state = initialState, action) => {
     case LOGOUT_REQUEST: {
       return {
         ...state,
-        isLoggedIn: false,
+        isLoggingOut: true
+      };
+    }
+    case LOGOUT_SUCCESS: {
+      return {
+        ...state,
+        isLoggingOut: false,
         user: null
+      };
+    }
+    case LOAD_USER_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case LOAD_USER_SUCCESS: {
+      if (action.me) {
+        return {
+          ...state,
+          user: action.data
+        };
+      }
+      return {
+        ...state,
+        userInfo: action.data
       };
     }
     case SIGN_UP_REQUEST: {
