@@ -1,35 +1,17 @@
 /**
  * @description Comment Store initial Object
- * comment 댓글
+ * mainComments 댓글들
  * imagePaths 이미지 경로
  * addCommentErrorReason 댓글 등록 실패 사유
  * isAddingComment 댓글 등록
  * addedComment 댓글 등록 성공
  */
 export const initialState = {
-  mainComment: [{
-    id: 1,
-    User: {
-      id: 1,
-      nickname: ' kim'
-    },
-    content: '1댓글',
-    img: 'http://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/movie/01afb7b934974bb285ad8d82cfd92d90.JPG'
-  }],
+  mainComments: [],
   imagePaths: [],
   addCommentErrorReason: '',
   isAddingComment: false,
   addedComment: false
-};
-
-const dummyComment = {
-  id: 1,
-  User: {
-    id: 1,
-    nickname: ' kim'
-  },
-  content: '1댓글',
-  img: 'http://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/movie/01afb7b934974bb285ad8d82cfd92d90.JPG'
 };
 
 export const LOAD_MAIN_COMMENTS_REQUEST = 'LOAD_MAIN_COMMENTS_REQUEST';

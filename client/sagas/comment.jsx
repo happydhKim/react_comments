@@ -1,6 +1,7 @@
 import {
   all, fork, takeLatest, delay, put
 } from 'redux-saga/effects';
+import axios from 'axios';
 import { ADD_COMMENT_REQUEST, ADD_COMMENT_SUCCESS, ADD_COMMENT_FAILURE } from '../reducers/comment';
 
 function* addComment() {
