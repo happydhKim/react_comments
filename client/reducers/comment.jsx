@@ -53,21 +53,8 @@ export const UNLIKE_COMMENT_SUCCESS = 'UNLIKE_COMMENT_SUCCESS';
 export const UNLIKE_COMMENT_FAILURE = 'UNLIKE_COMMENT_FAILURE';
 
 
-const ADD_DUMMY = 'ADD_DUMMY';
-
 export const addComment = {
   type: ADD_COMMENT_REQUEST
-};
-
-export const addDummy = {
-  type: ADD_DUMMY,
-  data: {
-    content: '안녕하세요',
-    UserId: 1,
-    User: {
-      nickname: 'kim'
-    }
-  }
 };
 
 export default (state = initialState, action) => {
@@ -81,17 +68,12 @@ export default (state = initialState, action) => {
       };
     }
     case ADD_COMMENT_SUCCESS: {
-      // const commentIndex = state.mainEvents.findIndex((v) => v.id === action.data.eventId);
-      // const comment = state.mainEvents[commentIndex];
-      // const Content = [...comment.content, dummyComment];
-      // const mainComment = [...state.mainEvents];
-      // mainComments[commentIndex] = { ...comment, Content };
       return {
         ...state,
         isAddingComment: false,
-        // mainComment,
-        mainComment: [dummyComment, ...state.mainComment],
-        addedComment: true
+        mainComments: [action.data, ...state.mainPosts],
+        addedComment: true,
+        imagePaths: []
       };
     }
     case ADD_COMMENT_FAILURE: {
