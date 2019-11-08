@@ -5,12 +5,12 @@ import Comment from '../components/Comment';
 
 const Main = () => {
   const { user } = useSelector((state) => state.user);
-  const { mainComment } = useSelector((state) => state.comment);
+  const { mainComments } = useSelector((state) => state.comment);
   return (
     <>
       <div>
         {user && <WriteComment />}
-        {mainComment.map((c) => <Comment key={c} comment={c} />)}
+        {mainComments.map((c) => <Comment key={c} comment={c} />)}
       </div>
     </>
   );
