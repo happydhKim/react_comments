@@ -14,6 +14,7 @@ const userAPIRouter = require('./routes/user');
 const commentAPIRouter = require('./routes/comment');
 const commentsAPIRouter = require('./routes/comments');
 const hashtagAPIRouter = require('./routes/hashtag');
+const authAPIRouter = require('./routes/auth');
 
 const app = express();
 db.sequelize.sync();
@@ -48,6 +49,7 @@ app.use('/api/user', userAPIRouter);
 app.use('/api/post', commentAPIRouter);
 app.use('/api/posts', commentsAPIRouter);
 app.use('/api/hashtag', hashtagAPIRouter);
+app.use('/api/auth', authAPIRouter);
 
 app.listen(3005, () => {
   console.log('서버가 작동중이에요! http://localhost:3005');

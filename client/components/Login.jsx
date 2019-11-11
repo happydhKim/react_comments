@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { setState, useCallback } from 'react';
 import {
   Form, Input, Button
 } from 'antd';
 import Link from 'next/link';
+import KakaoLogin from 'react-kakao-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { commonInput } from '../hooks';
 import { LOGIN_REQUEST } from '../reducers/user';
@@ -12,6 +13,14 @@ const Login = () => {
   const [password, onChangePassword] = commonInput('');
   const { isLoggingIn } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const responseKakao = (res) => {
+    setState({
+      nickname: res.profile.properties.nickname
+    });
+  };
+  const responseFailure = (err) => {
+    console.log(err);
+  };
 
   const onSubmitForm = useCallback((e) => {
     e.preventDefault();
@@ -37,6 +46,13 @@ const Login = () => {
         </div>
         <div>
           <Button type="primary" htmlType="submit" loading={isLoggingIn}>로그인</Button>
+          <KakaoLogin
+            jsKey={process.env.KAKAO_KEY}
+            buttonText="Kakao"
+            onSuccess={responseKakao}
+            onFailure={responseFailure}
+            getProfile
+          />
           <Link href="/signup"><a><Button type="primary">회원가입</Button></a></Link>
         </div>
       </Form>

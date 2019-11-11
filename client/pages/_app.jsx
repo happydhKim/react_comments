@@ -5,15 +5,19 @@ import withRedux from 'next-redux-wrapper';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import dotenv from 'dotenv';
 import AppLayout from '../components/AppLayout';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
+
+dotenv.config();
 
 const App = ({ Component, store }) => (
   <>
     <Provider store={store}>
       <Head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js" />
         <title>댓글 달아봐요</title>
       </Head>
       <AppLayout>
