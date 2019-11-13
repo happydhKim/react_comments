@@ -5,12 +5,9 @@ import withRedux from 'next-redux-wrapper';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import dotenv from 'dotenv';
 import AppLayout from '../components/AppLayout';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
-
-dotenv.config();
 
 const App = ({ Component, store }) => (
   <>
